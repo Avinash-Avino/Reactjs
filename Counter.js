@@ -6,7 +6,7 @@ class Counter extends Component {
      super(props)
  
      this.state = {
-         count:0  
+         count:0,count1:''
      }
     
     }
@@ -14,19 +14,22 @@ class Counter extends Component {
     
  
     max=()=>{
-        if(this.state.count<10){
+       
          this.setState({
          count:this.state.count+1
-        })}
-        else if(this.state.count<19){
+        })
+        if(this.state.count>9){
+            if(this.state.count>=19){
+                this.setState({
+                    count1:'20 years old'
+                })}
+            else {
             this.setState({
-                count:'your are pre-mature'
+                count1:'10 years old'
             })}
-        else if(this.state.count>19){
-            this.setState({
-                count:'Congratulation'
-            })
-        }
+       
+        
+    }
         
     
     }
@@ -35,13 +38,25 @@ class Counter extends Component {
          {
         this.setState({
          count:this.state.count-1})}
+         if(this.state.count>9){
+            if(this.state.count>=19){
+                this.setState({
+                    count1:'20 years old'
+                })}
+            else {
+            this.setState({
+                count1:'10 years old'
+            })}
     
  }
-    re(){
+}
+    re=()=>{
         this.setState({
-            count:0
+            count:0,count1:''
         })
+        
     }
+
 
  
 
@@ -50,10 +65,10 @@ class Counter extends Component {
     render() {
         return (
             <div>
-                <h1 className='primary Msize Nsize'>Avinash {this.state.count}<br/>
-              <button className='bsize' onClick = {this.max}>+</button><tab/>
+                <h1 className='primary Msize Nsize'>Avinash {this.state.count}<p>{this.state.count1}</p>
+                <button style={{height:"{this.state.count}"}} className='bsize' onClick = {this.min}>-</button><tab/>
               <button style={{width:"210px",height:"{this.state.count}"}} className='bsize' onClick={()=>this.re()}>RESET</button><tab/>
-                <button style={{height:"{this.state.count}"}} className='bsize' onClick = {this.min}>-</button></h1><tab/>
+              <button className='bsize' onClick = {this.max}>+</button><tab/></h1>
                 
 
             </div>
